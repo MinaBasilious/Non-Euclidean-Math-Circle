@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+
+\title{Answers Sequence \& Series}
+\author{Mina Basilious}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Answers}
+\subsection*{\# 1}
+for this simple geometric series we just substitute it in $\dfrac{a_\circ}{1-r}$.\\
+$$\text{For } |x|<1, \ 1+x+x^2+x^3+x^4+...=\boxed{\frac{1}{1-x}}$$
+\subsection*{\# 2}
+$$\sum_{k=0}^n \log(x^k)$$
+$$\log(1)+\log(x)+\log(x^2)+...+\log(x^n)$$
+Knowing that $\log(ab)=\log(a)+\log(b)$ then
+$$\log(1\cdot x \cdot x^2 \cdot ... \cdot x^n)$$
+From the properties of the exponents, we could add them with multiplications.
+$$\log(x^{0+1+2+3+...+n})$$
+$$\log(x^{\sum_{i=0}^ni})$$
+And from the properties of logarithms, we could bring the inner exponent out $\log(a^b)=b\log(a)$.
+$$\sum_{i=0}^ni \cdot \log(x)$$
+And $\sum_{i=0}^ni$ is simple arithmetic series that has generalized formula as $\frac{n(n+1)}{2}$.
+$$\sum_{k=0}^n \log(x^k)=\boxed{\frac{n(n+1)\log(x)}{2}}$$
+\subsection*{\# 3}
+We will proof by induction.
+We check the initial condition firstly
+$$a_0=2^0=1 \ \checkmark$$
+Then we assume the statement is true for $n=k$ and then show it holds for $n=k+1$, which will prove for all terms of the sequence.
+$$2^k = a_k$$
+As we know from
+$$2^{k+1}=2 \cdot 2^k = 2a_k$$\\
+Then\\
+$$a_{n+1}=2a_n \implies a_n = 2^n$$
+
+\subsection*{\# 4}
+Leave it for you to figure it out.\\
+If you could not reach any solutions read ``Proofs That Really Count" at the beginning of Chapter 8 Number Theory.
+
+\end{document}
