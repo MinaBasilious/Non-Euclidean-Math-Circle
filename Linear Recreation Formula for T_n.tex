@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepackage{witharrows}
+\title{Driving Linear Recurrence Formula for T_n}
+\author{Mina Basilious}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{beforehand info}
+$T_n$ is the sequence A006356 on OEIS Encyclopedia defined as
+$$T_n=2T_{n-1}+T_{n-2}-T_{n-3}$$
+\section{Driving steps}
+\subsection{The eigenvalues of $T_n$}
+Firstly, we construct the characteristic equation
+\begin{equation*}
+\begin{WithArrows}
+    \lambda^n=&2 \lambda^{n-1} + \lambda^{n-2} - \lambda^{n-3} \Arrow{Divide $\lambda^{n-3}$}\\
+    \lambda^3=&2 \lambda^2 + \lambda^1 - 1\\
+    \lambda^3-&2 \lambda^2 - \lambda + 1=0
+\end{WithArrows}
+\end{equation*}
+Solving for $\lambda$, we expect to get three values for $\lambda$: $\lambda_1, \lambda_2, \lambda_3$\\
+We expect that $$\lambda_1+\lambda_2+\lambda_3=2$$ And
+$$\lambda_1\cdot \lambda_2 \cdot \lambda_3 = -1$$
+I skipped the hand computation process, but mostly if I would try to compute it I'll use Newton's method to get approximated value 'cause it seems to me after seeing the true value I would never get it by hand. and approximated value will be practical in some way.
+$$\lambda_1 \approx -0.801937735804838$$
+$$\lambda_2 \approx 0.554958132087371$$
+$$\lambda_3 \approx 2.24697960371747$$
+We now try to define a function for $T_n$
+$$T(n)=c_1 \lambda_1^n+c_2 \lambda_2^n + c_3 \lambda_3^n$$
+To evaluate the values of these constants we could solve a system of equations with the help of already counted values for $T_n$.
+$$T_0 = 1, T_1 =3 , T_2 = 6$$
+Which we could solve in this form
+$$\begin{bmatrix}
+\lambda_1^0 & \lambda_2^0 & \lambda_3^0\\ 
+\lambda_1^1 & \lambda_2^1 & \lambda_1^1\\ 
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2
+\end{bmatrix}
+\begin{bmatrix}
+c_1\\ 
+c_2\\ 
+c_3
+\end{bmatrix}=\begin{bmatrix}
+T_0\\ 
+T_1\\ 
+T_3
+\end{bmatrix}
+$$
+We get that 
+$$c_1 \approx -0.28012 , c_2 \approx 0.0597315 , c_3 \approx 1.22039$$
+And graphing it would look like that
+\begin{center}
+    \begin{tikzpicture}
+\begin{axis}[
+    axis lines = left,
+    xlabel = \(x\),
+    ylabel = {\(T(x)\)},
+    ymin=0, ymax=35,
+    xmin=0, xmax=4.5
+]
+\addplot[
+    domain=0:4,
+    mark=square,
+    samples=5, 
+    color=black,
+]{(-0.28012)*(-0.801937)^(x)+(0.0597315)(0.554958)^(x)+(1.22039)(2.246979)^(x)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{document}
