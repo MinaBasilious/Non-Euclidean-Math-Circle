@@ -1,0 +1,66 @@
+
+% Required to support mathematical unicode
+\usepackage[warnunknown, fasterrors, mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+
+% Always typeset math in display style
+\everymath{\displaystyle}
+
+% Adjust the font size
+\usepackage[fontsize=10pt]{scrextend}
+
+% Standard mathematical typesetting packages
+\usepackage[T1]{fontenc}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage[cal=cm, scr=rsfs, frak=euler, bb=ams]{mathalpha}
+\usepackage{lmodern}
+
+% Symbol and utility packages
+\usepackage{cancel, textcomp}
+\usepackage[mathscr]{euscript}
+\usepackage[nointegrals]{wasysym}
+
+% Extras
+\usepackage{physics}  % Lots of useful shortcuts and macros
+\usepackage{tikz}  % For drawing commutative diagrams easily
+\usepackage[compat=1.18]{pgfplots} % For drawing graphs of functions 
+\usepackage{color}  % Add some colour to life
+\usepackage{microtype}  % Minature font tweaks
+\usepackage[none]{hyphenat} % Closing auto-hyphenats
+%\usepackage[includeheadfoot,left=33mm,right=28mm,top=30mm,bottom=30mm]{geometry} % General page style I love to use
+\usepackage{float} % Never know what it does but prevents some figure errors
+\usepackage{witharrows} % Cool arrows for styling steps
+\usepackage[inkscapeformat=png]{svg} % To use SVG files
+\usepackage{arabtex} % For writing Arabic
+%\usepackage{hyperref} Nice for hyperlinks but it may cause errors
+%\hypersetup{
+%    colorlinks=true,
+%    filecolor=magenta,      
+%    urlcolor=cyan,
+%    pdftitle={My Preamble},
+%    pdfpagemode=FullScreen,
+%    }
+
+    
+% Common shortcuts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\bN{\mbb{N}}
+\def\bC{\mbb{C}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+
+% Sometimes helpful macros
+\newcommand{\func}[3]{#1\colon#2\to#3}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\renewenvironment{quote}{%
+  \list{}{%
+    \leftmargin0.8cm   % this is the adjusting screw
+    \rightmargin\leftmargin
+  }
+  \item\relax
+}
+{\endlist}
